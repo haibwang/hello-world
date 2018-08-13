@@ -1,2 +1,2 @@
-# hello-world
-hello world , this is my used github firstly, so, this is just to Learn
+# Just for Learning
+​	 This repository is for learning programming practice.
