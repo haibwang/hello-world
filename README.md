@@ -1,2 +1,2 @@
-# Just for Learning
-​	 This repository is for learning programming practice.
+# Just for learning
+​	 This repository is used to practice for programming
