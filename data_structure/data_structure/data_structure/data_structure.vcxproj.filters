@@ -21,12 +21,18 @@
     <ClCompile Include="test.c">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="expression_calculator.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stacklib.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="def_type.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="expression_calculator.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

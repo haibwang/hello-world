@@ -16,30 +16,12 @@
 int main(void)
 {
     uint8 data = 0;
+    String infix_expression="9+(3-1)*3+10/2";
+    char suffix_expression[255];
 
-    stack.init(10);
+    calculate(infix_expression, suffix_expression);
 
-    stack.push(1);
-    stack.push(2);
-    stack.push(3);
-    stack.push(4);
-    stack.push(5);
-    stack.push(6);
-    stack.push(7);
-    stack.push(8);
-
-    for (int i = 0;i<10;i++)
-    {
-        stack.pop(&data);
-        printf("%d ", data);
-    }
-    printf("%d\n");
-    stack.push(8);
-    for (int i = 0; i < 10; i++)
-    {
-        stack.pop(&data);
-        printf("%d ", data);
-    }
+    printf("%s", suffix_expression);
     return 0;
 }
 
