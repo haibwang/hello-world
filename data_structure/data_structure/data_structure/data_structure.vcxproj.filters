@@ -18,7 +18,13 @@
     <ClCompile Include="stacklib.c">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="test.c">
+    <ClCompile Include="main.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="stack_test.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="expression_calc_test.c">
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="expression_calculator.c">
@@ -33,6 +39,12 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="expression_calculator.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="calclib.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="test.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

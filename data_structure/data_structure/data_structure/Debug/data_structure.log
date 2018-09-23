@@ -1,2 +1,18 @@
-﻿  data_structure.vcxproj -> D:\opensource\github\practice_code\data_structure\data_structure\Debug\data_structure.exe
-  data_structure.vcxproj -> D:\opensource\github\practice_code\data_structure\data_structure\Debug\data_structure.pdb (Partial PDB)
+﻿生成启动时间为 2018/9/24 3:39:19。
+     1>项目“D:\source\GitHub\practice\practice_code\data_structure\data_structure\data_structure\data_structure.vcxproj”在节点 2 上(Build 个目标)。
+     1>ClCompile:
+         D:\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\" /Fd"Debug\vc140.pdb" /Gd /TC /analyze- /errorReport:prompt expression_calc_test.c
+         expression_calc_test.c
+     1>d:\source\github\practice\practice_code\data_structure\data_structure\data_structure\expression_calc_test.c(57): warning C4002: “assert”宏的实参太多
+       Link:
+         D:\Microsoft Visual Studio 14.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"D:\source\GitHub\practice\practice_code\data_structure\data_structure\Debug\data_structure.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG:FASTLINK /PDB:"D:\source\GitHub\practice\practice_code\data_structure\data_structure\Debug\data_structure.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:\source\GitHub\practice\practice_code\data_structure\data_structure\Debug\data_structure.lib" /MACHINE:X86 Debug\expression_calculator.obj
+         Debug\expression_calc_test.obj
+         Debug\main.obj
+         Debug\stacklib.obj
+         Debug\stack_test.obj
+         data_structure.vcxproj -> D:\source\GitHub\practice\practice_code\data_structure\data_structure\Debug\data_structure.exe
+     1>已完成生成项目“D:\source\GitHub\practice\practice_code\data_structure\data_structure\data_structure\data_structure.vcxproj”(Build 个目标)的操作。
+
+已成功生成。
+
+已用时间 00:00:01.38
