@@ -1,2 +1,9 @@
-﻿  data_structure.vcxproj -> D:\opensource\github\practice_code\data_structure\data_structure\Debug\data_structure.exe
+﻿  expression_calculator.c
+d:\opensource\github\practice_code\data_structure\data_structure\data_structure\expression_calculator.c(19): warning C4047: “=”:“STACK *”与“TResult”的间接级别不同
+d:\opensource\github\practice_code\data_structure\data_structure\data_structure\expression_calculator.c(40): warning C4244: “=”: 从“uint32”转换到“uint8”，可能丢失数据
+d:\opensource\github\practice_code\data_structure\data_structure\data_structure\expression_calculator.c(45): warning C4267: “=”: 从“size_t”转换到“uint8”，可能丢失数据
+d:\opensource\github\practice_code\data_structure\data_structure\data_structure\expression_calculator.c(49): warning C4267: “=”: 从“size_t”转换到“uint8”，可能丢失数据
+d:\opensource\github\practice_code\data_structure\data_structure\data_structure\expression_calculator.c(110): warning C4267: “=”: 从“size_t”转换到“uint8”，可能丢失数据
+d:\opensource\github\practice_code\data_structure\data_structure\data_structure\expression_calculator.c(158): warning C4716: “calculate”: 必须返回一个值
+  data_structure.vcxproj -> D:\opensource\github\practice_code\data_structure\data_structure\Debug\data_structure.exe
   data_structure.vcxproj -> D:\opensource\github\practice_code\data_structure\data_structure\Debug\data_structure.pdb (Partial PDB)
