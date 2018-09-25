@@ -11,15 +11,18 @@
 #include <stdlib.h>
 #include <string.h>
 
-struct stack_data_t *stack_data;
+/************************************************************************
+  单栈 、循环栈 、共享空间栈  
 
-/************************************************************************/
-/*  单栈 、循环栈 、共享空间栈                                              */
+
+  本部分为 顺序存储单栈
 /************************************************************************/
 struct stack_data_t * init(uint32 size)
 {
+	struct stack_data_t *stack_data;
+
     stack_data = (struct stack_data_t *)malloc(sizeof(struct stack_data_t));
-    stack_data->stack_addr = (uint8 *)malloc(size);
+    stack_data->stack_addr = malloc(size);
     memset(stack_data->stack_addr,0, size);
     if (stack_data->stack_addr)
     {
@@ -30,30 +33,55 @@ struct stack_data_t * init(uint32 size)
     return __NULL;
 }
 
-TResult push(uint8 data)
+TResult push(struct stack_data_t *stack_data, void * data, uint8 len, uint8 data_tye)
 {
-    if (stack_data->top < stack_data->stack_size)
-    {
-        stack_data->stack_addr[stack_data->top] = data;
-        stack_data->top++;
-        return true;
-    }
-    return false;
+	for (size_t i = 0; i < len+1; i++)
+	{
+		if (stack_data->top < stack_data->stack_size)
+		{
+			if (i == len)
+			{
+				*(((uint8 *)stack_data->stack_addr) + stack_data->top) = data_tye;
+			}
+			else
+			{
+				*(((uint8 *)stack_data->stack_addr) + stack_data->top) = *((uint8 *)data + i);
+			}	
+			stack_data->top++;
+		}
+		else
+		{
+			return false;
+		}
+	}
+	return true;
 }
 
-TResult pop(uint8 *data)
+TResult pop(struct stack_data_t *stack_data, void *data, uint8 len, uint8 data_type)
 {
     if (stack_data->top > 0 && data)
     {
         stack_data->top--;
-        *data = stack_data->stack_addr[stack_data->top];
-        return true;
+        data_type = *((uint8 *)stack_data->stack_addr+stack_data->top);
+		for (size_t i = 0; i < len; i++)
+		{
+			if (stack_data->top > 0 && data)
+			{
+				stack_data->top--;
+				*((uint8 *)data+len-1-i) = *((uint8 *)stack_data->stack_addr + stack_data->top);
+			}
+			else
+			{
+				memset(data, 0, len + 1);
+				return false;
+			}
+		}
     }
-    *data = 0;
-    return false;
+	
+    return true;
 }
 
-TResult clean(void)
+TResult clean(struct stack_data_t *stack_data)
 {
     if (stack_data->stack_addr)
     {
@@ -65,24 +93,38 @@ TResult clean(void)
     return false;
 }
 
-uint32 get_stack_len(void)
-{
-    return stack_data->stack_size;
-}
-
-uint32 get_stack_free(void)
-{
-    return stack_data->stack_size - stack_data->top;
-}
-
-uint32 get_stack_top(void)
+uint32 get_stack_len(struct stack_data_t *stack_data )
 {
     return stack_data->top;
 }
 
-uint32 get_top_data(uint8 *data)
+uint32 get_stack_free(struct stack_data_t *stack_data)
 {
-    *data = stack_data->stack_addr[stack_data->top];
+    return stack_data->stack_size - stack_data->top;
+}
+
+uint32 get_stack_top(struct stack_data_t *stack_data)
+{
+    return stack_data->top;
+}
+
+uint32 get_top_data(struct stack_data_t *stack_data, void *data,uint8 len, uint8 data_type)
+{
+	uint8 index = 0;
+
+	if (stack_data->top > 1)
+	{
+		data_type = *((uint8 *)stack_data->stack_addr + stack_data->top - 1);
+	}
+	for (size_t i = 0; i < len; i++)
+	{
+		index = stack_data->top-i-1;
+		if (stack_data->top>len+1)
+		{
+			*((uint8 *)data+len-1-i) = *((uint8 *)stack_data->stack_addr + index - 1);
+		}
+	}
+    
     return true;
 }
 

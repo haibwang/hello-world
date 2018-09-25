@@ -111,13 +111,17 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="expression_calculator.c" />
+    <ClCompile Include="expression_calc_test.c" />
+    <ClCompile Include="main.c" />
     <ClCompile Include="stacklib.c" />
-    <ClCompile Include="test.c" />
+    <ClCompile Include="stack_test.c" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="calclib.h" />
     <ClInclude Include="def_type.h" />
     <ClInclude Include="expression_calculator.h" />
     <ClInclude Include="stacklib.h" />
+    <ClInclude Include="test.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
