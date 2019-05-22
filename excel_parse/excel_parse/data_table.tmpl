@@ -1,0 +1,99 @@
+<TMPL_IF name="format_t" value="format">\
+<* data_table 的头 *>\
+/**
+ * @defgroup  file_lists Data Units 
+ * @ingroup   cfg  
+ * @see       fs  
+ * @brief     系统的全局数据单元描述  
+ *
+ * @{
+ * @file
+ *
+ */
+#include "hfp_system.h"
+#include "fs.h"
+#include "hfp_handy.h"
+#include "relay_ctrl_plugin.h"
+#include "prepay_internal.h"
+#include "lib_calclib.h"
+
+#define rly_save1 sizeof(struct relay_ctrl_state_t)
+#define rly_save2 sizeof(struct relay_ctrl_info_t)
+#define rly_save3 sizeof(struct relay_ctrl_result_t)
+
+#define DEMAND_LEN         0x04
+#define DEMAND_TIME_LEN    0x05
+#define DEMAND_SAME        0x05
+#define STATISTIC_LEN      (sizeof(struct vol_quality_t) * 5)
+
+#define ENERGY_SAME        0x05
+#define PULSE_BLOCK_LEN    2
+#define KWH_BLOCK_LEN      4
+
+#define RAM_ENERGY_SAME    0x05
+#define RAM_ENERGY_LEN     0x04
+#define RAM_PULSE_LEN      0x01
+
+struct vol_quality_t
+{
+    uint32 statistic_times;   /**< 总检测时间 */
+    uint16 ok_rate;           /**< 合格率 */
+    uint16 bad_rate;          /**< 超限率 */
+    uint32 vol_bad_times1;    /**< 超上限时间 */
+    uint32 vol_bad_times2;    /**< 超下限时间 */
+};
+
+extern const struct hfp_device_t CODE *match_device(uint16 device_id);
+
+/**************数据格式表格****************************************/
+enum file_format_index
+{   /* 注意 ：最好是 8 个一行， 中间不允许有间断 */
+	format_00, format_01, format_02, format_03, format_04, format_05, format_06, format_07, /**< 00 -- 07 */
+	format_08, format_09, format_10, format_11, format_12, format_13, format_14, format_15, /**< 08 -- 15 */
+	format_16, format_17, format_18, format_19, format_20,
+    F_U16_V_N1, F_I32_A_N3, F_U32_W_N1, F_U32_KW_N4, F_U32_KVAR_N4, F_U8_SEC_0, F_I16_PER_N1, F_I16_PER_N2, F_U16_PER_N2,
+    F_ENUM, F_BOOL, F_OAD, F_I32_KWH_N2, F_I32_KVARH_N2, F_I32_KVAH_N2, F_I32_W_N1, F_I32_var_N1, F_I32_VA_N1, F_I16_COS_N3,
+	F_U16_ANGLE_N1, F_U16_HZ_N2, F_U32_KWH_N2, F_U32_KVARH_N2, F_U32_KVAH_N2, 
+	F_I32_KWH_N4, F_I32_KVARH_N4, F_I32_KVAH_N4, F_U32_KWH_N4, F_U32_KVARH_N4, F_U32_KVAH_N4, 
+    F_U32_Ah_N2, F_ARRAY_NUDEF, F_OAD_NUDEF, F_DATETIME_S_NUDEF, F_NULL
+};
+<* **********************************************format_tab 模板*****************************************>
+const struct file_format_t CODE <TMPL_VAR name = "file_format_tab_name">[] =
+{\
+<TMPL_LOOP name = "format_loop">
+    { <TMPL_VAR name = "format">, <TMPL_VAR name = "data_type">, <TMPL_VAR name = "unit">, <TMPL_VAR name = "decimals">, <TMPL_VAR name = "index"> }, /**< <TMPL_VAR name = "comment"> */\
+</TMPL_LOOP>
+};
+const uint8 CODE file_format_num = array_count(file_format);
+<***********************************************format_tab 模板*****************************************>
+/*******************数据关注表格****************************/
+enum notify_index
+{   /* 注意 ：最好是 8 个一行， 中间不允许有间断 */
+	notify_00, notify_01, notify_02, notify_03, notify_04, notify_05, notify_06, notify_07, /**< 00 -- 07 */
+	notify_08, notify_09, notify_10, notify_11, notify_12, notify_13, notify_14, notify_15, /**< 08 -- 15 */
+};\
+</TMPL_IF>
+<TMPL_IF name="notify_index_t" value="notify_index">\
+<***********************************************notify_index 模板*****************************************>\
+const struct notify_index_t CODE <TMPL_VAR name = "notify_tab_name">[] =
+{\
+<TMPL_LOOP name = "notify_index_loop">
+    { <TMPL_VAR name = "notify">, <TMPL_VAR name = "index"> }, /**< <TMPL_VAR name = "comment"> */\
+</TMPL_LOOP>
+};\
+<* **********************************************notify_index 模板*****************************************>
+const uint8 CODE file_notify_num = array_count(notify_tab);  /**< 此常量名称不能修改 */\
+</TMPL_IF>\
+<TMPL_IF name="file_t" value="file">\
+<******************************file_tab 模板*******************************************>\
+const struct file_t CODE <TMPL_VAR name = "file_t_tab_name">[] =
+{\
+<TMPL_LOOP name = "file_loop">
+    { <TMPL_VAR name = "id">, <TMPL_VAR name = "save_address">, <TMPL_VAR name = "len">, <TMPL_VAR name = "same">, attribute(<TMPL_VAR name = "data_format">, <TMPL_VAR name = "notify_index">, <TMPL_VAR name = "ram_driver">, <TMPL_VAR name = "enabled_same">, <TMPL_VAR name = "media_page_size">, <TMPL_VAR name = "enabled_check">) }, /**< <TMPL_VAR name = "comment"> */\
+</TMPL_LOOP>
+};\
+<******************************file_tab 模板******************************************>\
+</TMPL_IF>
+<TMPL_IF name="file_t_tab_name" value="item_demand_tab">\
+const uint16 CODE item_demand_num = sizeof(item_demand_tab) / sizeof(item_demand_tab[0]);
+</TMPL_IF>

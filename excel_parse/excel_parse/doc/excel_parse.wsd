@@ -1,0 +1,29 @@
+@startuml
+
+:命令行参数解析;
+:excel_parse();
+floating note left:get code generator index
+:process_excel;
+floating note left:foreach  excel sheets
+
+
+@enduml
+
+@startuml
+package "arguments" {
+    "template"
+    "xlsx"
+    "generator name"
+}
+
+package "core" {
+[get generator]
+[arg parse]
+[get each sheet]
+}
+arguments -> [command arguments]
+[command arguments]->[arg parse]
+[get each sheet]..>()"generator":use
+
+
+@enduml

@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="源文件">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="头文件">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="资源文件">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="源文件\lib">
+      <UniqueIdentifier>{8167cac0-846b-47b9-96d2-22932970070f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\src">
+      <UniqueIdentifier>{669e4ac8-b21f-4cb7-9219-8a4075a4d3d5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\src\generator">
+      <UniqueIdentifier>{71deaef4-44e3-4a75-af55-70422252eb7c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\cfg">
+      <UniqueIdentifier>{0bcc7de7-72e3-4240-a30d-f085753c9635}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\src\core">
+      <UniqueIdentifier>{3fb4d45c-7047-46e5-b5f3-cdab4aa76dbd}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\main.c">
+      <Filter>源文件\src</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\ctemplate\ctemplate.c">
+      <Filter>源文件\lib</Filter>
+    </ClCompile>
+    <ClCompile Include="inc\cfg.h">
+      <Filter>头文件</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\getopt.c">
+      <Filter>源文件\lib</Filter>
+    </ClCompile>
+    <ClCompile Include="src\core\core.c">
+      <Filter>源文件\src\core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\cfg\data_table_gen_cfg.c">
+      <Filter>源文件\cfg</Filter>
+    </ClCompile>
+    <ClCompile Include="src\generator\data_table_gen.c">
+      <Filter>源文件\src\generator</Filter>
+    </ClCompile>
+    <ClCompile Include="src\cfg\generator_cfg.c">
+      <Filter>源文件\cfg</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="inc\ctemplate.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\generator\data_table_gen.h">
+      <Filter>源文件\src\generator</Filter>
+    </ClInclude>
+    <ClInclude Include="src\core\core.h">
+      <Filter>源文件\src\core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\generator\generator.h">
+      <Filter>源文件\src\generator</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
